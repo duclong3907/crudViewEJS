@@ -1,0 +1,26 @@
+<%- include('../brand/header') %>
+    <form action="<%= mobile._id ? '/mobile/edit/'+ mobile._id : '/mobile/add' %>" method="post">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Model</label>
+            <input type="text" class="form-control" name="model" value="<%= mobile.model%>">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Image</label>
+            <input type="url" class="form-control" name="image" value="<%= mobile.image%>">
+        </div>
+        <select class="form-select" aria-label="Default select example" name="brand">
+            <% var id = mobile.brand.id; for(let brand of brands){ %>
+                <% if(id != null && id == brand._id) { %>
+                    <option value="<%= id %>" selected>
+                        <%= mobile.brand.name%>
+                    </option>
+                <% } else{ %>
+                    <option value="<%= brand._id%>">
+                        <%= brand.name%>
+                    </option>
+                <% } %>
+            <% } %>
+        </select>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>

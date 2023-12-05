@@ -1,0 +1,35 @@
+<%- include('header') %>
+
+    <body>
+        <a href="brand/add" class="btn btn-success">Add a new brand</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% index=1; for(let brand of brands) {%>
+                    <tr>
+                        <th scope="row">
+                            <%= index++%>
+                        </th>
+                        <td>
+                            <%= brand.name%>
+                        </td>
+                        <td>
+                            <%= brand.country%>
+                        </td>
+                        <td>
+                            <a href="brand/edit/<%= brand._id %>" class="btn btn-primary">Edit</a>
+                            <a href="brand/delete/<%= brand._id %>" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </body>
+    <%- include('footer') %>
